@@ -1,0 +1,29 @@
+<h1> New User Form </h1>
+<%= flash[:notice] %><br>
+<%= form_for(@user) do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
+
+  <%= f.label "How happy are you? (Scale: 1 to 5)" %><br>
+  <%= f.number_field :happiness %><br>
+
+  <%= f.label "How nauseous are you? (Scale: 1 to 5)" %><br>
+  <%= f.number_field :nausea %><br>
+
+  <%= f.label "Height in inches" %><br>
+  <%= f.number_field :height %><br>
+
+  <%= f.label "How much money do you have for rides? ($1 = 1 ticket)" %><br>
+  <%= f.number_field :tickets %><br><br>
+
+  <%= f.label "Check here if you're an Admin" %>
+  <%= f.check_box :admin %><br><br>
+
+  <%= f.submit %>
+<% end %>
+<br>
+
+<%= button_to "Return home", root_path, action: "get", method: "get" %>
