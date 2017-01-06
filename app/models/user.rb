@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :rides
   has_many :attractions, through: :rides
-  validates :password, presence: true
+  #validates :password, presence: true
   validates :name, uniqueness: true
   # validates :password, presence: true
   # validates :happiness, presence: true

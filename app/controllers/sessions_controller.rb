@@ -4,9 +4,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(name: user_params[:name])
-    if @user && @user.authenticate(user_params[:password])
+    #@user = User.find_by(name: user_params[:name])
+    @user = User.find_by(name: [params[:user][:name]])
+    if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
+      #binding.pry
       redirect_to user_path(@user)
     else
       flash[:notice] = "Your username or password was incorrect!"
@@ -19,11 +21,11 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  private
+  # private
 
-  def user_params
-    params.require(:user).permit(:name, :password)
-  end
+  # def user_params
+  #   params.require(:user).permit(:name, :password)
+  # end
 
 
 

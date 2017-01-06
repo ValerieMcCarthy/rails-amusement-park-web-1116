@@ -1,14 +1,24 @@
 <h1> Welcome to your user page </h1>
+
+<%= flash[:notice] %>
+
+<% if !@user.admin %>
 <h3> Name: <%= @user.name %></h3>
-<h2> Mood: </h2>
+<h2> Mood: <%= @user.mood %></h2>
   <ul> 
     <li> happy: <%= @user.happiness %></li>
     <li> nausea: <%= @user.nausea %></li>
   </ul>
 <h2> Tickets: <%= @user.tickets %></h2>
 <h2> Height: <%= @user.height %></h2>
-<% if @user.admin %>
+<% else %>
+<h3> Name: <%= @user.name %></h3>
   <h2>ADMIN</h2>
+  <%= link_to "Create new ride", new_attraction_path %>
 <% end %>
+<p></p>
 <%= link_to "Log Out", logout_path %>
+
+<p></p>
+<%= link_to "See attractions", attractions_path %>
 

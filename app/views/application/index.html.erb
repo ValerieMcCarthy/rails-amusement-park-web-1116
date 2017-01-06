@@ -1,3 +1,14 @@
 <h1> Welcome to Val and Matt's Amusement Park! </h1>
-<h3> <%= link_to "Sign up", new_user_path %> </h3>
-<h3> <%= link_to "Sign in", signin_path %></h3>
+
+<p></p>
+<%= flash[:notice] %><br>
+<p></p>
+
+<% if session[:user_id] %>
+	<h3> <%= link_to "Your profile page", user_path(session[:user_id]) %> </h3>
+	<h3> <%= link_to "See attractions", attractions_path %> </h3>
+	
+<% else %>
+	<h3> <%= link_to "Sign up", new_user_path %> </h3>
+	<h3> <%= link_to "Sign in", signin_path %></h3>
+<% end %>

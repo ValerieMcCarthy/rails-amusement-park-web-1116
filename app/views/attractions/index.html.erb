@@ -1,0 +1,30 @@
+<h1>List of Attractions</h1>
+<p></p>
+<p></p>
+
+<%= flash[:notice] %>
+<p></p>
+
+<% if  @attractions == nil %>
+	<h2> There are currently no available rides </h2>
+
+	<h2></h2>
+	 <%= link_to "Go Home", logout_path %>
+<% end %>
+<% if current_user.admin%>
+		<%= link_to "Create New Attraction", new_attraction_path %>
+		
+<% end %>
+
+ <% @attractions.each do |attraction| %>
+
+ 	<%= attraction.name %> <br>
+ 	Tickets: <%= attraction.tickets %><br><br>
+ 	 <% if current_user.admin %>
+ 	  	
+          <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
+        <% else %>
+                 <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
+        <% end %>
+ 	<% end %>
+ 	
